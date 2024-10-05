@@ -26,25 +26,31 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "  {\r\n       \"product_id\": \"{{product_id}}\",\r\n       \"quantity\": {{quantity}}\r\n     }",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "product_id",
+							"value": "{{product_id}}",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "{{quantity}}",
+							"type": "text"
 						}
-					}
+					]
 				},
 				"url": {
-					"raw": "https://altaivita.ru/api/cart/add",
+					"raw": "https://altaivita.ru/engine/cart/add_products_to_cart_from_preview.php",
 					"protocol": "https",
 					"host": [
 						"altaivita",
 						"ru"
 					],
 					"path": [
-						"api",
+						"engine",
 						"cart",
-						"add"
+						"add_products_to_cart_from_preview.php"
 					]
 				}
 			},
@@ -67,11 +73,11 @@
 				}
 			],
 			"request": {
-				"method": "PATCH",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n       \"product_id\": \"{{product_id}}\",\r\n       \"quantity\": {{new_quantity}}\r\n     }",
+					"raw": "{\r\n\"product_id\": \"{{product_id}}\",\r\n\"quantity\": \"{{new_quantity}}\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -79,16 +85,16 @@
 					}
 				},
 				"url": {
-					"raw": "https://altaivita.ru/api/cart/update",
+					"raw": "https://altaivita.ru/engine/cart/add_products_to_cart_from_preview.php",
 					"protocol": "https",
 					"host": [
 						"altaivita",
 						"ru"
 					],
 					"path": [
-						"api",
+						"engine",
 						"cart",
-						"update"
+						"add_products_to_cart_from_preview.php"
 					]
 				}
 			},
@@ -111,11 +117,11 @@
 				}
 			],
 			"request": {
-				"method": "DELETE",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n       \"product_id\": \"{{product_id}}\"\r\n     }",
+					"raw": "{\r\n\"product_id\": \"{{product_id}}\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -123,22 +129,37 @@
 					}
 				},
 				"url": {
-					"raw": "https://altaivita.ru/api/cart/remove",
+					"raw": "https://altaivita.ru/engine/cart/delete_products_from_cart_preview.php",
 					"protocol": "https",
 					"host": [
 						"altaivita",
 						"ru"
 					],
 					"path": [
-						"api",
+						"engine",
 						"cart",
-						"remove"
+						"delete_products_from_cart_preview.php"
 					]
 				}
 			},
 			"response": []
 		}
 	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "S_CID",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "f2c828e58a139a8864cfdd6b64455381",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
@@ -164,18 +185,30 @@
 	"variable": [
 		{
 			"key": "product_id",
-			"value": "",
+			"value": "6746",
 			"type": "string"
 		},
 		{
 			"key": "quantity",
-			"value": "",
+			"value": "1",
 			"type": "string"
 		},
 		{
 			"key": "new_quantity",
-			"value": "",
+			"value": "2",
 			"type": "string"
+		},
+		{
+			"key": "CID",
+			"value": "\"f2c828e58a139a8864cfdd6b64455381\"",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "LANG",
+			"value": "\"ru\"",
+			"type": "string",
+			"disabled": true
 		}
 	]
 }
